@@ -1,0 +1,27 @@
+{
+    "name": "hashandsalt/kirby3-auth0",
+    "description": "Auth0 support for Kirby 3+",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hash&Salt",
+            "email": "hello@hashandsalt.com"
+        }
+    ],
+    "require": {
+        "getkirby/composer-installer": "^1.1",
+        "auth0/auth0-php": "^8.6",
+        "nyholm/psr7": "^1.8",
+        "guzzlehttp/guzzle": "^7.7",
+        "guzzlehttp/psr7": "^2.5",
+        "http-interop/http-factory-guzzle": "^1.2",
+        "vlucas/phpdotenv": "^5.5"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
+    }
+}

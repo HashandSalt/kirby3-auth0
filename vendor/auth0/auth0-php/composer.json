@@ -1,0 +1,116 @@
+{
+  "name": "auth0/auth0-php",
+  "description": "PHP SDK for Auth0 Authentication and Management APIs.",
+  "license": "MIT",
+  "type": "library",
+  "keywords": [
+    "auth0",
+    "authentication",
+    "authorization",
+    "login",
+    "auth",
+    "jwt",
+    "json web token",
+    "jwk",
+    "json web key",
+    "oauth",
+    "openid",
+    "secure",
+    "protect",
+    "api"
+  ],
+  "authors": [
+    {
+      "name": "Auth0",
+      "email": "support@auth0.com",
+      "homepage": "https://auth0.com/"
+    }
+  ],
+  "homepage": "https://github.com/auth0/auth0-PHP",
+  "require": {
+    "php": "^8.0",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-openssl": "*",
+    "php-http/multipart-stream-builder": "^1.2",
+    "psr-discovery/all": "^1.0",
+    "psr/http-client-implementation": "^1.0",
+    "psr/http-factory-implementation": "^1.0",
+    "psr/http-message-implementation": "^1.0"
+  },
+  "suggest": {
+    "psr/cache-implementation": "(PSR-6 Cache) Improve performance by avoiding making redundant network requests.",
+    "psr/event-dispatcher-implementation": "(PSR-14 Event Dispatcher) Observe and react to events when they occur."
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.14",
+    "mockery/mockery": "^1.5",
+    "pestphp/pest": "^2.0",
+    "phpstan/phpstan": "^1.10",
+    "phpstan/phpstan-strict-rules": "^1.5",
+    "psr-mock/http": "^1.0",
+    "rector/rector": "^0.15",
+    "symfony/cache": "^4.4 || ^5.0 || ^6.0",
+    "symfony/event-dispatcher": "^4.0 || ^5.0 || ^6.0",
+    "vimeo/psalm": "^5.8",
+    "wikimedia/composer-merge-plugin": "^2.0"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "Auth0\\SDK\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Auth0\\Tests\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "wikimedia/composer-merge-plugin": true,
+      "infection/extension-installer": false,
+      "php-http/discovery": false
+    },
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "process-timeout": 0,
+    "sort-packages": true
+  },
+  "extra": {
+    "merge-plugin": {
+      "ignore-duplicates": false,
+      "include": [
+        "composer.local.json"
+      ],
+      "merge-dev": true,
+      "merge-extra": false,
+      "merge-extra-deep": false,
+      "merge-scripts": false,
+      "recurse": true,
+      "replace": true
+    }
+  },
+  "scripts": {
+    "pest:coverage": "@php vendor/bin/pest --coverage --parallel --no-progress",
+    "pest:debug": "@php vendor/bin/pest --log-events-verbose-text pest.log --fail-on-risky --stop-on-failure --display-errors",
+    "pest:profile": "@php vendor/bin/pest --profile",
+    "pest": "@php vendor/bin/pest --order-by random --fail-on-risky",
+    "phpcs:fix": "@php vendor/bin/php-cs-fixer fix",
+    "phpcs": "@php vendor/bin/php-cs-fixer fix --dry-run --diff",
+    "phpstan": "@php vendor/bin/phpstan analyze",
+    "psalm:fix": "@php vendor/bin/psalter --issues=all",
+    "psalm": "@php vendor/bin/psalm",
+    "rector:fix": "@php vendor/bin/rector process src",
+    "rector": "@php vendor/bin/rector process src --dry-run",
+    "test": [
+      "@pest",
+      "@phpstan",
+      "@psalm",
+      "@rector",
+      "@phpcs"
+    ]
+  }
+}
